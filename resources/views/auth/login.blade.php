@@ -8,7 +8,7 @@
     <title>Login | {{ config('app.name') }}</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('images/favicon.png') }}">
+    <link rel="icon" href="{{ asset('images/favicon.ico') }}">
     <!-- CoreUI CSS -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}" crossorigin="anonymous">
     <!-- Bootstrap Icons -->
@@ -19,7 +19,7 @@
 <div class="container">
     <div class="row mb-3">
         <div class="col-12 d-flex justify-content-center">
-            <img width="200" src="{{ asset('images/logo-dark.png') }}" alt="Logo">
+            <img width="200" src="{{ asset('images/33.png') }}" alt="Reno Tile Solutions">
         </div>
     </div>
     <div class="row justify-content-center">
@@ -31,7 +31,7 @@
             @endif
             <div class="card p-4 border-0 shadow-sm">
                 <div class="card-body">
-                    <form id="login" method="post" action="{{ url('/login') }}">
+                    <form id="login" method="POST" action="{{ url('/login') }}">
                         @csrf
                         <h1>Login</h1>
                         <p class="text-muted">Sign In to your account</p>
@@ -84,7 +84,7 @@
 
             <p class="text-center mt-5 lead">
                 Developed By
-                <a href="https://fahimanzam.netlify.app" class="font-weight-bold text-primary">Fahim Anzam Dip</a>
+                <a href="#" class="font-weight-bold text-primary">Hamba Yusufu</a>
             </p>
         </div>
     </div>

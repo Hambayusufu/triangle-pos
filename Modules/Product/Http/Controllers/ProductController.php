@@ -37,6 +37,14 @@ class ProductController extends Controller
             foreach ($request->input('document', []) as $file) {
                 $product->addMedia(Storage::path('temp/dropzone/' . $file))->toMediaCollection('images');
             }
+           // Validate product fields including product_number, but remove barcode if you don't need it
+            $request->validate([
+                'name' => 'required',
+                'price' => 'required',  // Keep price or remove if not needed
+                'product_number' => 'required',  // Add product_number validation
+                // Remove barcode if not needed
+                ]);
+
         }
 
         toast('Product Created!', 'success');
