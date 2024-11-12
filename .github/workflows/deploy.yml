@@ -1,0 +1,36 @@
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches:
+      - main  # Trigger deployment on pushes to the main branch
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: |
+          composer install --no-dev --optimize-autoloader
+          npm install && npm run production  # If using frontend assets, build them
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.1.0
+        with:
+          ftp-server: ftp.renotilesolutions.com
+          ftp-username: u192538270.renotilesolutions
+          ftp-password: Renot1le$
+          local-dir: ./  # Your local project directory
+          server-dir: /public_html  # Target directory on Hostinger (adjust if necessary)
+          exclude: |
+            .git*
+            .github/
+            node_modules/
+            tests/
+            vendor/
+            storage/*.log
+            .env
